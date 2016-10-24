@@ -20,5 +20,7 @@ ERR_CAPTCHA_REQUIRED = 'require_captcha'
 ERR_ACTION_ALREADY_DONE = 'action_already_done'
 # http 412
 ERR_PRECONDITION_FAILED = 'precondition_failed'
+ERR_CAPTCHA_NEED_REFRESH = 'captcha_need_refresh'
+ERR_OBJECT_NOT_FOUND = 'object_not_found'
 
 ERR_CODE_MAP = {}
