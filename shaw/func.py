@@ -36,7 +36,7 @@ def dumps(data):
     return "\n" + json.dumps(data, indent=4, sort_keys=True)
 
 
-def send_mail(server, fro, to, subject, text, files=None):
+def send_mail(server, fro, to, subject, text, files=None, is_html=False):
     assert type(server) == dict
     assert type(fro) == str
     assert type(to) == list
@@ -50,7 +50,7 @@ def send_mail(server, fro, to, subject, text, files=None):
     msg['Subject'] = Header(subject, 'utf-8').encode()
     msg['To'] = ','.join(to)
     msg['Date'] = formatdate(localtime=True)
-    msg.attach(MIMEText(text, 'plain', 'utf8'))
+    msg.attach(MIMEText(text, 'html' if is_html else 'plain', 'utf8'))
 
     for f in files:
         att = MIMEText(open(f, 'rb').read(), 'base64', 'utf-8')
