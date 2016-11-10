@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
         name='shaw',
-        version='0.0.6',
+        version='0.0.7',
         description='Common python package',
         url='https://github.com/hangyan/shaw',
         author='Hang Yan',

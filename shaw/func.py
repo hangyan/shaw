@@ -4,13 +4,20 @@ import json
 import os
 import random
 import string
+import logging
 
 from email.header import Header
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from email.utils import formatdate
 
+from shaw import errors
+
+from shaw.exception import SHException
+
 __author__ = 'Hang Yan'
+
+LOG = logging.getLogger(__name__)
 
 
 def rand_low_str(length, upper=False, lower=True, digit=False, punc=False):
@@ -59,7 +66,12 @@ def send_mail(server, fro, to, subject, text, files=None, is_html=False):
         msg.attach(att)
 
     import smtplib
-    smtp = smtplib.SMTP_SSL(server['name'], server['port'])
-    smtp.login(server['user'], server['password'])
-    smtp.sendmail(fro, to, msg.as_string())
-    smtp.close()
+    try:
+        smtp = smtplib.SMTP_SSL(server['name'], server['port'])
+        smtp.login(server['user'], server['password'])
+        smtp.sendmail(fro, to, msg.as_string())
+        smtp.close()
+    except Exception, e:
+        LOG.info("Send email error! | {} {}".format(to, e))
+        raise SHException(code=errors.ERR_INVALID_VALUE,
+                          message='Send email error, may be the email address is not valid!')
