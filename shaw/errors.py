@@ -23,4 +23,6 @@ ERR_PRECONDITION_FAILED = 'precondition_failed'
 ERR_CAPTCHA_NEED_REFRESH = 'captcha_need_refresh'
 ERR_OBJECT_NOT_FOUND = 'object_not_found'
 
+ERR_UPSTREAM_ERROR = 'upstream_error'
+
 ERR_CODE_MAP = {}
