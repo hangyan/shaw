@@ -1,6 +1,9 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+
+from collections import defaultdict
+
 __author__ = 'Hang Yan'
 
 
@@ -42,3 +45,9 @@ def comp_dict_list(x, y):
 
 def check_missing_keys(data, keys):
     return [key for key in keys if key not in data]
+
+
+def superdict(arg=()):
+    """recursive defaultdict which can init with other dict """
+    update = lambda obj, arg: obj.update(arg) or obj  # noqa
+    return update(defaultdict(superdict), arg)
