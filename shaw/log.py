@@ -1,9 +1,10 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 import logging
+import sys
+
 from colorlog import ColoredFormatter, escape_codes
 from colorlog.colorlog import ColoredRecord
-import sys
 
 __author__ = 'Hang Yan'
 

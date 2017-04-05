@@ -2,8 +2,9 @@
 # -*- coding: utf-8 -*-
 
 import logging
+
 from shaw.errors import ERR_CODE_MAP
-from shaw.web import error_response, json_response
+from shaw.web.web import error_response, json_response
 
 __author__ = 'Hang Yan'
 
@@ -40,7 +41,7 @@ class MiddlewareMixin(object):
 class SHExceptionMiddleware(MiddlewareMixin):
     def process_exception(self, request, exception):
         LOG.error("Capture exception. type: {}, info: {}".format(type(exception), exception))
-        if type(exception) == SHException:
+        if isinstance(exception, SHException):
             if type(exception.code) == int:
                 return error_response(message=exception.message, status=exception.code)
             return json_response(data={
