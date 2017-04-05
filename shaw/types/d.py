@@ -1,8 +1,11 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-
+import copy
+import pickle
 from collections import defaultdict
+
+from shaw.types.l import car, cdr
 
 __author__ = 'Hang Yan'
 
@@ -46,3 +49,11 @@ def rget(d, key):
     cdrs = cdr(keys)
     cars = car(keys)
     return rget(d.get(cars), cdrs) if cdrs else d.get(cars)
+
+
+def deepcopy(data):
+    """Use pickle to do deep_copy"""
+    try:
+        return pickle.loads(pickle.dumps(data))
+    except TypeError:
+        return copy.deepcopy(data)
