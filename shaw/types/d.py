@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+
 import copy
 import pickle
 from collections import defaultdict
@@ -57,3 +58,28 @@ def deepcopy(data):
         return pickle.loads(pickle.dumps(data))
     except TypeError:
         return copy.deepcopy(data)
+
+
+def deepcp(data):
+    """Use ujson to do deep_copy"""
+    import ujson
+    try:
+        return ujson.loads(ujson.dumps(data))
+    except Exception:
+        return copy.deepcopy(data)
+
+
+def tree():
+    """Simple version of superdict, no support for dict init.
+
+    see: https://gist.github.com/hrldcpr/2012250
+    """
+    return defaultdict(tree)
+
+
+class Tree(dict):
+    """See: https://en.wikipedia.org/wiki/Autovivification"""
+
+    def __missing__(self, key):
+        value = self[key] = type(self)()
+        return value
