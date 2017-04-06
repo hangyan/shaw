@@ -20,3 +20,8 @@ def cdr(l):
 def chunks(l, n):
     """Split list l in N-sized chunks"""
     return [l[i:i + n] for i in xrange(0, len(l), n)]
+
+
+def identical(x):
+    """Check if all the elements in a list is equal."""
+    return x.count(x[0]) == len(x)
