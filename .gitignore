@@ -2,3 +2,4 @@ dist/
 shaw.egg-info/
 .idea/
 build/
+.ropeproject/

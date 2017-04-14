@@ -16,6 +16,10 @@ __author__ = 'Hang Yan'
 LOG = logging.getLogger(__name__)
 
 
+def fun():
+    print "{} %s", "string"
+
+
 class MultiProcessTimedRotatingFileHandler(TimedRotatingFileHandler):
     def doRollover(self):
         """
