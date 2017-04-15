@@ -13,11 +13,13 @@ PIP_INSTALL = sudo pip install
 
 .PHONY: all setup build test help
 
-all: check
+all: check test
 
 check:
 	$(FLAKE8) $(SOURCEDIR) --show-source  --statistics --count
 
+test:
+	green
 
 upload:
 	python setup.py sdist upload -r pypi

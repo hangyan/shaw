@@ -3,3 +3,4 @@ shaw.egg-info/
 .idea/
 build/
 .ropeproject/
+*.pyc
