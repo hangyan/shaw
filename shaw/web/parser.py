@@ -20,4 +20,4 @@ def get_page_source(url):
 def get_soup(url):
     from bs4 import BeautifulSoup
     page = get_page_source(url)
-    return BeautifulSoup(page)
+    return BeautifulSoup(page, "html.parser")
