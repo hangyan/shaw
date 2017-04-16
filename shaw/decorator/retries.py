@@ -31,7 +31,8 @@ def example_exc_handler(tries_remaining, exception, delay):
     tries_remaining: The number of tries remaining.
     exception: The exception instance which was raised.
     """
-    print >> sys.stderr, "Caught '%s', %d tries remaining, sleeping for %s seconds" % (exception, tries_remaining, delay)
+    print >> sys.stderr, "Caught '%s', %d tries remaining, sleeping for %s seconds" % (
+        exception, tries_remaining, delay)
 
 
 def retries(max_tries, delay=1, backoff=2, exceptions=(Exception,), hook=None):
@@ -64,7 +65,7 @@ def retries(max_tries, delay=1, backoff=2, exceptions=(Exception,), hook=None):
             tries.reverse()
             for tries_remaining in tries:
                 try:
-                   return func(*args, **kwargs)
+                    return func(*args, **kwargs)
                 except exceptions as e:
                     if tries_remaining > 0:
                         if hook is not None:

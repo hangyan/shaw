@@ -4,11 +4,11 @@
 __author__ = 'Hang Yan'
 
 
-def downloads(urls, func):
+def process(items, func):
     from gevent import monkey
     monkey.patch_all()
     from gevent.pool import Pool
-    urls = [x for x in urls if x]
-    pool = Pool(len(urls))
-    result = pool.map(func, urls)
+    items = [x for x in items if x]
+    pool = Pool(len(items))
+    result = pool.map(func, items)
     return result

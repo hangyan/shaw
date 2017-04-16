@@ -13,7 +13,7 @@ __author__ = 'Hang Yan'
 
 def pop_keys(keys, data):
     """Remove list of keys from data(dict)"""
-    _ = [data.pop(x, None) for x in keys]
+    [data.pop(x, None) for x in keys]
 
 
 def merge(x, y):
