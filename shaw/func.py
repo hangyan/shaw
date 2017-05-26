@@ -1,23 +1,28 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 import json
+import logging
 import os
 import random
 import string
-import logging
-
 from email.header import Header
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from email.utils import formatdate
 
 from shaw import errors
-
 from shaw.exception import SHException
 
 __author__ = 'Hang Yan'
 
 LOG = logging.getLogger(__name__)
+
+
+def apply_list(func_list, data):
+    assert isinstance(func_list, list)
+    if not func_list:
+        return data
+    return apply_list(cdr(func_list), car(func_list)(data))
 
 
 def rand_low_str(length, upper=False, lower=True, digit=False, punc=False):
